@@ -1,34 +1,48 @@
 import re
 
-def extract_keywords(text):
-    words = re.findall(r'\b[a-zA-Z]{4,}\b', text.lower())
+def detect_question_type(model_answer):
+    text = model_answer.lower()
 
-    # Remove common useless words
-    stopwords = {
-        "the", "is", "are", "was", "were", "this", "that",
-        "with", "from", "have", "has", "had", "will",
-        "shall", "can", "could", "would", "should"
-    }
+    # math detection
+    if "=" in text or any(op in text for op in ["+", "-", "*", "/", "^"]):
+        return "math"
 
-    keywords = [w for w in words if w not in stopwords]
+    # long descriptive → language
+    if len(text.split()) > 25:
+        return "language"
 
-    # Remove duplicates
+    return "theory"
+
+def extract_required_keywords(required_text):
+    # Split numbered points
+    parts = re.split(r'\d+\.\s*', required_text)
+
+    keywords = []
+
+    for part in parts:
+        words = re.findall(r'[a-zA-Z]+', part.lower())
+
+        # Keep important words only
+        filtered = [w for w in words if len(w) > 4]
+
+        keywords.extend(filtered[:2])  # take 1–2 per point
+
     return list(set(keywords))
 
 
-def extract_equation(text):
-    match = re.findall(r'[a-zA-Z]+\s*=\s*[a-zA-Z0-9\*\+\-/\^\.\(\)]+', text)
-    return match[0] if match else None
+def generate_rubric(teacher_data):
+    model_answer = teacher_data["model_answer"]
+    required = teacher_data["required"]
 
+    q_type = detect_question_type(model_answer)
 
-def generate_rubric(reference_answer):
-    keywords = extract_keywords(reference_answer)
-    equation = extract_equation(reference_answer)
+    import re
+    parts = re.split(r'\d+\.\s*', required)
+    required_elements = [p.strip() for p in parts if p.strip()]
 
     return {
-        "keywords": keywords,
-        "optional_keywords": [],
-        "keyword_weight": 0.5,
-        "equation": equation,
-        "math_weight": 0.3
+        "type": q_type,
+        "required_elements": required_elements,
+        "model_answer": model_answer,
+        "equation": model_answer if q_type == "math" else None
     }
