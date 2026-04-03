@@ -3,4 +3,4 @@ numpy
 umap 
 sklearn
 hdbscan
-sentence_transformer
+sentence_transformers
