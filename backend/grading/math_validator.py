@@ -54,7 +54,3 @@ def validate_equation(student_expr, correct_expr):
     except Exception as e:
         print("Math error:", e)
         return False
-
-    except Exception as e:
-        print("Math error:", e)
-        return False
