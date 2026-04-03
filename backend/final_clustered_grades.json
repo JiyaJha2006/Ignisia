@@ -1,0 +1,352 @@
+[
+    {
+        "ID":1,
+        "Student Answer":"Momentum is conserved because there are no external forces.",
+        "Category":"Exact Match",
+        "Q1_Answer":"Momentum is conserved because there are no external forces.",
+        "Cluster_ID":6
+    },
+    {
+        "ID":2,
+        "Student Answer":"Momentum is conserved because there are no external forces.",
+        "Category":"Exact Match",
+        "Q1_Answer":"Momentum is conserved because there are no external forces.",
+        "Cluster_ID":6
+    },
+    {
+        "ID":3,
+        "Student Answer":"Momentum is conserved because there are no external forces.",
+        "Category":"Exact Match",
+        "Q1_Answer":"Momentum is conserved because there are no external forces.",
+        "Cluster_ID":6
+    },
+    {
+        "ID":4,
+        "Student Answer":"Momentum is conserved because there are no external forces.",
+        "Category":"Exact Match",
+        "Q1_Answer":"Momentum is conserved because there are no external forces.",
+        "Cluster_ID":6
+    },
+    {
+        "ID":5,
+        "Student Answer":"Momentum is conserved because there are no external forces.",
+        "Category":"Exact Match",
+        "Q1_Answer":"Momentum is conserved because there are no external forces.",
+        "Cluster_ID":6
+    },
+    {
+        "ID":6,
+        "Student Answer":"Due to the absence of outside force, the total momentum remains constant.",
+        "Category":"Phrasing Variation",
+        "Q1_Answer":"Due to the absence of outside force, the total momentum remains constant.",
+        "Cluster_ID":5
+    },
+    {
+        "ID":7,
+        "Student Answer":"In an isolated system where net force is zero, momentum does not change.",
+        "Category":"Phrasing Variation",
+        "Q1_Answer":"In an isolated system where net force is zero, momentum does not change.",
+        "Cluster_ID":-1
+    },
+    {
+        "ID":8,
+        "Student Answer":"Total momentum stays the same since no external impulse is applied.",
+        "Category":"Phrasing Variation",
+        "Q1_Answer":"Total momentum stays the same since no external impulse is applied.",
+        "Cluster_ID":5
+    },
+    {
+        "ID":9,
+        "Student Answer":"The momentum of the objects is constant because external force is zero.",
+        "Category":"Phrasing Variation",
+        "Q1_Answer":"The momentum of the objects is constant because external force is zero.",
+        "Cluster_ID":-1
+    },
+    {
+        "ID":10,
+        "Student Answer":"Since there's no resultant external force acting, momentum is preserved.",
+        "Category":"Phrasing Variation",
+        "Q1_Answer":"Since there's no resultant external force acting, momentum is preserved.",
+        "Cluster_ID":6
+    },
+    {
+        "ID":11,
+        "Student Answer":"External force zero hai, isliye momentum conserve rahega.",
+        "Category":"Hinglish\/Hindi",
+        "Q1_Answer":"External force zero hai, isliye momentum conserve rahega.",
+        "Cluster_ID":3
+    },
+    {
+        "ID":12,
+        "Student Answer":"System pe koi bahar se force nahi lag raha, toh momentum constant hai.",
+        "Category":"Hinglish\/Hindi",
+        "Q1_Answer":"System pe koi bahar se force nahi lag raha, toh momentum constant hai.",
+        "Cluster_ID":-1
+    },
+    {
+        "ID":13,
+        "Student Answer":"Agar external force absent ho, toh total momentum badalta nahi hai.",
+        "Category":"Hinglish\/Hindi",
+        "Q1_Answer":"Agar external force absent ho, toh total momentum badalta nahi hai.",
+        "Cluster_ID":-1
+    },
+    {
+        "ID":14,
+        "Student Answer":"Momentum is conserved.",
+        "Category":"Partially Correct",
+        "Q1_Answer":"Momentum is conserved.",
+        "Cluster_ID":-1
+    },
+    {
+        "ID":15,
+        "Student Answer":"Because there are no external forces acting on the bodies.",
+        "Category":"Partially Correct",
+        "Q1_Answer":"Because there are no external forces acting on the bodies.",
+        "Cluster_ID":2
+    },
+    {
+        "ID":16,
+        "Student Answer":"The total momentum remains constant in the system.",
+        "Category":"Partially Correct",
+        "Q1_Answer":"The total momentum remains constant in the system.",
+        "Cluster_ID":4
+    },
+    {
+        "ID":17,
+        "Student Answer":"Momentum constant rehta hai.",
+        "Category":"Partially Correct",
+        "Q1_Answer":"Momentum constant rehta hai.",
+        "Cluster_ID":-1
+    },
+    {
+        "ID":18,
+        "Student Answer":"Gravity pulls it down.",
+        "Category":"Wrong",
+        "Q1_Answer":"Gravity pulls it down.",
+        "Cluster_ID":1
+    },
+    {
+        "ID":19,
+        "Student Answer":"Kinetic energy is always conserved in all collisions.",
+        "Category":"Wrong",
+        "Q1_Answer":"Kinetic energy is always conserved in all collisions.",
+        "Cluster_ID":-1
+    },
+    {
+        "ID":20,
+        "Student Answer":"Acceleration is proportional to the force applied.",
+        "Category":"Wrong",
+        "Q1_Answer":"Acceleration is proportional to the force applied.",
+        "Cluster_ID":0
+    },
+    {
+        "ID":21,
+        "Student Answer":"Momentum is conserved because there are no external forces.",
+        "Category":"Exact Match",
+        "Q1_Answer":"Momentum is conserved because there are no external forces.",
+        "Cluster_ID":6
+    },
+    {
+        "ID":22,
+        "Student Answer":"Momentum is conserved because there are no external forces.",
+        "Category":"Exact Match",
+        "Q1_Answer":"Momentum is conserved because there are no external forces.",
+        "Cluster_ID":6
+    },
+    {
+        "ID":23,
+        "Student Answer":"Momentum is conserved because there are no external forces.",
+        "Category":"Exact Match",
+        "Q1_Answer":"Momentum is conserved because there are no external forces.",
+        "Cluster_ID":6
+    },
+    {
+        "ID":24,
+        "Student Answer":"Momentum is conserved because there are no external forces.",
+        "Category":"Exact Match",
+        "Q1_Answer":"Momentum is conserved because there are no external forces.",
+        "Cluster_ID":6
+    },
+    {
+        "ID":25,
+        "Student Answer":"Momentum is conserved because there are no external forces.",
+        "Category":"Exact Match",
+        "Q1_Answer":"Momentum is conserved because there are no external forces.",
+        "Cluster_ID":6
+    },
+    {
+        "ID":26,
+        "Student Answer":"When no external force acts on the system, the total momentum is conserved.",
+        "Category":"Phrasing Variation",
+        "Q1_Answer":"When no external force acts on the system, the total momentum is conserved.",
+        "Cluster_ID":7
+    },
+    {
+        "ID":27,
+        "Student Answer":"The net momentum of the system stays unchanged in the absence of external forces.",
+        "Category":"Phrasing Variation",
+        "Q1_Answer":"The net momentum of the system stays unchanged in the absence of external forces.",
+        "Cluster_ID":5
+    },
+    {
+        "ID":28,
+        "Student Answer":"As no outside force influences the system, the combined momentum does not vary.",
+        "Category":"Phrasing Variation",
+        "Q1_Answer":"As no outside force influences the system, the combined momentum does not vary.",
+        "Cluster_ID":5
+    },
+    {
+        "ID":29,
+        "Student Answer":"Momentum is maintained constant because the net external force on the system is nil.",
+        "Category":"Phrasing Variation",
+        "Q1_Answer":"Momentum is maintained constant because the net external force on the system is nil.",
+        "Cluster_ID":5
+    },
+    {
+        "ID":30,
+        "Student Answer":"Without any external force acting, the system's momentum remains the same throughout.",
+        "Category":"Phrasing Variation",
+        "Q1_Answer":"Without any external force acting, the system's momentum remains the same throughout.",
+        "Cluster_ID":5
+    },
+    {
+        "ID":31,
+        "Student Answer":"Koi external force nahi hai is system mein, isliye momentum same rehega.",
+        "Category":"Hinglish\/Hindi",
+        "Q1_Answer":"Koi external force nahi hai is system mein, isliye momentum same rehega.",
+        "Cluster_ID":3
+    },
+    {
+        "ID":32,
+        "Student Answer":"Total momentum change nahi hoga kyunki baaki forces zero hain.",
+        "Category":"Hinglish\/Hindi",
+        "Q1_Answer":"Total momentum change nahi hoga kyunki baaki forces zero hain.",
+        "Cluster_ID":-1
+    },
+    {
+        "ID":33,
+        "Student Answer":"External forces nahi hain, toh conservation of momentum apply hoga.",
+        "Category":"Hinglish\/Hindi",
+        "Q1_Answer":"External forces nahi hain, toh conservation of momentum apply hoga.",
+        "Cluster_ID":3
+    },
+    {
+        "ID":34,
+        "Student Answer":"There are no external forces present in the system.",
+        "Category":"Partially Correct",
+        "Q1_Answer":"There are no external forces present in the system.",
+        "Cluster_ID":2
+    },
+    {
+        "ID":35,
+        "Student Answer":"The total momentum of the system does not change.",
+        "Category":"Partially Correct",
+        "Q1_Answer":"The total momentum of the system does not change.",
+        "Cluster_ID":4
+    },
+    {
+        "ID":36,
+        "Student Answer":"Momentum stays the same during the collision.",
+        "Category":"Partially Correct",
+        "Q1_Answer":"Momentum stays the same during the collision.",
+        "Cluster_ID":-1
+    },
+    {
+        "ID":37,
+        "Student Answer":"The objects have equal and opposite momenta.",
+        "Category":"Partially Correct",
+        "Q1_Answer":"The objects have equal and opposite momenta.",
+        "Cluster_ID":-1
+    },
+    {
+        "ID":38,
+        "Student Answer":"The velocity of the object increases due to gravity.",
+        "Category":"Wrong",
+        "Q1_Answer":"The velocity of the object increases due to gravity.",
+        "Cluster_ID":1
+    },
+    {
+        "ID":39,
+        "Student Answer":"The force applied equals the mass times velocity.",
+        "Category":"Wrong",
+        "Q1_Answer":"The force applied equals the mass times velocity.",
+        "Cluster_ID":0
+    },
+    {
+        "ID":40,
+        "Student Answer":"Energy is neither created nor destroyed in the collision.",
+        "Category":"Wrong",
+        "Q1_Answer":"Energy is neither created nor destroyed in the collision.",
+        "Cluster_ID":-1
+    },
+    {
+        "ID":41,
+        "Student Answer":"Momentum is conserved because there are no external forces.",
+        "Category":"Exact Match",
+        "Q1_Answer":"Momentum is conserved because there are no external forces.",
+        "Cluster_ID":6
+    },
+    {
+        "ID":42,
+        "Student Answer":"Momentum is conserved because there are no external forces.",
+        "Category":"Exact Match",
+        "Q1_Answer":"Momentum is conserved because there are no external forces.",
+        "Cluster_ID":6
+    },
+    {
+        "ID":43,
+        "Student Answer":"Momentum is conserved because there are no external forces.",
+        "Category":"Exact Match",
+        "Q1_Answer":"Momentum is conserved because there are no external forces.",
+        "Cluster_ID":6
+    },
+    {
+        "ID":44,
+        "Student Answer":"Momentum is conserved because there are no external forces.",
+        "Category":"Exact Match",
+        "Q1_Answer":"Momentum is conserved because there are no external forces.",
+        "Cluster_ID":6
+    },
+    {
+        "ID":45,
+        "Student Answer":"Momentum is conserved because there are no external forces.",
+        "Category":"Exact Match",
+        "Q1_Answer":"Momentum is conserved because there are no external forces.",
+        "Cluster_ID":6
+    },
+    {
+        "ID":46,
+        "Student Answer":"Due to absence of any external force, momentum of the entire system is conserved.",
+        "Category":"Phrasing Variation",
+        "Q1_Answer":"Due to absence of any external force, momentum of the entire system is conserved.",
+        "Cluster_ID":7
+    },
+    {
+        "ID":47,
+        "Student Answer":"Since external force is absent, the total momentum of the system remains constant.",
+        "Category":"Phrasing Variation",
+        "Q1_Answer":"Since external force is absent, the total momentum of the system remains constant.",
+        "Cluster_ID":5
+    },
+    {
+        "ID":48,
+        "Student Answer":"The system being isolated means no external force acts, so momentum is conserved.",
+        "Category":"Phrasing Variation",
+        "Q1_Answer":"The system being isolated means no external force acts, so momentum is conserved.",
+        "Cluster_ID":7
+    },
+    {
+        "ID":49,
+        "Student Answer":"Momentum stays the same because no net force from outside acts on the system.",
+        "Category":"Phrasing Variation",
+        "Q1_Answer":"Momentum stays the same because no net force from outside acts on the system.",
+        "Cluster_ID":5
+    },
+    {
+        "ID":50,
+        "Student Answer":"When the system is closed and external forces are zero, momentum is always conserved.",
+        "Category":"Phrasing Variation",
+        "Q1_Answer":"When the system is closed and external forces are zero, momentum is always conserved.",
+        "Cluster_ID":-1
+    }
+]
