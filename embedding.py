@@ -3,13 +3,20 @@ import re
 from pathlib import Path
 
 import hdbscan
+import numpy as np
 import pandas as pd
 from sentence_transformers import SentenceTransformer
+
+from text_normalizer import build_embedding_text, clean_ocr_artifacts
+
+
+QUESTION_ONE_MARKERS = r"(?:Q\.?\s*1|Que\s*1|Ans?:?\s*1|Answer\s*1|प्रश्न\s*1|उत्तर\s*1)"
+QUESTION_TWO_MARKERS = r"(?:Q\.?\s*2|Que\s*2|Ans?:?\s*2|Answer\s*2|प्रश्न\s*2|उत्तर\s*2|9\.?2\)?|0?2\]|92\])"
 
 
 def extract_q1(text):
     match = re.search(
-        r"(?:Q\.? ?1|Que 1|Ans?:? 1).*?(?=Q\.? ?2|Que 2|Ans?:? 2|Any: 2|9\.2|2>|2\)|$)",
+        rf"{QUESTION_ONE_MARKERS}.*?(?={QUESTION_TWO_MARKERS}|Any: 2|2>|2\)|$)",
         str(text),
         re.IGNORECASE | re.DOTALL,
     )
@@ -17,7 +24,7 @@ def extract_q1(text):
         return match.group(0).strip()
 
     fallback_text = re.sub(
-        r"(?:Q\.? ?2|Que 2|Ans?:? 2|Any: 2|9\.2|2>|2\)).*",
+        rf"(?:{QUESTION_TWO_MARKERS}|Any: 2|2>|2\)).*",
         "",
         str(text),
         flags=re.IGNORECASE | re.DOTALL,
@@ -27,7 +34,7 @@ def extract_q1(text):
 
 def extract_q2(text):
     match = re.search(
-        r"(?:Q\.? ?2|Que 2|Ans?:? ?2|Any: ?2|9\.?2\)?|2>|2\)|0?2\]|92\]).*",
+        rf"(?:{QUESTION_TWO_MARKERS}|Any: ?2|2>|2\)).*",
         str(text),
         re.IGNORECASE | re.DOTALL,
     )
@@ -40,6 +47,53 @@ def extract_q2(text):
         )
         return cleaned_text.strip()
     return "No Answer"
+
+
+def _safe_normalize_series(series):
+    return series.fillna("").apply(clean_ocr_artifacts).apply(build_embedding_text)
+
+
+def _normalize_embeddings(embeddings):
+    norms = np.linalg.norm(embeddings, axis=1, keepdims=True)
+    norms[norms == 0] = 1.0
+    return embeddings / norms
+
+
+def _reassign_outliers(cluster_ids, embeddings, similarity_threshold=0.58):
+    cluster_ids = np.array(cluster_ids, dtype=int)
+    normalized_embeddings = _normalize_embeddings(np.asarray(embeddings))
+    unique_clusters = [cluster_id for cluster_id in sorted(set(cluster_ids.tolist())) if cluster_id != -1]
+    if not unique_clusters:
+        return cluster_ids
+
+    centroids = {}
+    for cluster_id in unique_clusters:
+        cluster_vectors = normalized_embeddings[cluster_ids == cluster_id]
+        if len(cluster_vectors) == 0:
+            continue
+        centroid = cluster_vectors.mean(axis=0)
+        centroid_norm = np.linalg.norm(centroid)
+        if centroid_norm == 0:
+            continue
+        centroids[cluster_id] = centroid / centroid_norm
+
+    if not centroids:
+        return cluster_ids
+
+    for index, cluster_id in enumerate(cluster_ids):
+        if cluster_id != -1:
+            continue
+        similarities = {
+            candidate_id: float(np.dot(normalized_embeddings[index], centroid))
+            for candidate_id, centroid in centroids.items()
+        }
+        if not similarities:
+            continue
+        best_cluster, best_similarity = max(similarities.items(), key=lambda item: item[1])
+        if best_similarity >= similarity_threshold:
+            cluster_ids[index] = best_cluster
+
+    return cluster_ids
 
 
 def cluster_answers(
@@ -64,6 +118,8 @@ def cluster_answers(
 
     clean_df["Q1_Answer"] = clean_df["full_text"].apply(extract_q1)
     clean_df["Q2_Answer"] = clean_df["full_text"].apply(extract_q2)
+    clean_df["Q1_Embedding_Text"] = _safe_normalize_series(clean_df["Q1_Answer"])
+    clean_df["Q2_Embedding_Text"] = _safe_normalize_series(clean_df["Q2_Answer"])
 
     print("--- Loading the SentenceTransformer Model ---")
     model = SentenceTransformer("paraphrase-multilingual-mpnet-base-v2")
@@ -75,12 +131,12 @@ def cluster_answers(
     )
 
     print("\n--- PASS 1: Clustering Question 1 ---")
-    q1_embeddings = model.encode(clean_df["Q1_Answer"].tolist())
-    clean_df["Q1_Cluster_ID"] = clusterer.fit_predict(q1_embeddings)
+    q1_embeddings = model.encode(clean_df["Q1_Embedding_Text"].tolist())
+    clean_df["Q1_Cluster_ID"] = _reassign_outliers(clusterer.fit_predict(q1_embeddings), q1_embeddings)
 
     print("--- PASS 2: Clustering Question 2 ---")
-    q2_embeddings = model.encode(clean_df["Q2_Answer"].tolist())
-    clean_df["Q2_Cluster_ID"] = clusterer.fit_predict(q2_embeddings)
+    q2_embeddings = model.encode(clean_df["Q2_Embedding_Text"].tolist())
+    clean_df["Q2_Cluster_ID"] = _reassign_outliers(clusterer.fit_predict(q2_embeddings), q2_embeddings)
 
     print("\n=== FINAL CLUSTERING RESULTS ===")
     print(clean_df[["student_id", "Q1_Cluster_ID", "Q2_Cluster_ID"]])

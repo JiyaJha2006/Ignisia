@@ -13,6 +13,8 @@ from dotenv import load_dotenv
 from google.cloud import vision
 from tqdm import tqdm
 
+from backend.text_normalizer import clean_ocr_artifacts, detect_script_mix
+
 load_dotenv()
 
 CONF_THRESH = 55
@@ -30,9 +32,7 @@ def get_client():
 
 
 def clean_text(text):
-    text = text.replace("\x0c", " ")
-    text = re.sub(r"\s+", " ", text).strip()
-    return text
+    return clean_ocr_artifacts(text)
 
 
 def natural_sort_key(value):
@@ -288,6 +288,7 @@ def run_pipeline(source, group_by="auto", manifest_path=None):
             "source_files": [page["source_path"] for page in ordered_pages],
             "grouping_strategy": grouping_strategy,
             "full_text": str(clean_text(full_text)),
+            "script_type": detect_script_mix(full_text),
             "avg_confidence": float(round(avg_conf, 1)),
             "flagged": bool(avg_conf < CONF_THRESH),
         }
