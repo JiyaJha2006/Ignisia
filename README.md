@@ -20,41 +20,6 @@ The platform is built for practical classroom workflows rather than fully opaque
 - Cost and efficiency reporting for pipeline runs
 - Streamlit-based review dashboard
 
-## Project Structure
-
-```text
-Ignisia-main/
-├── streamlit_app.py
-├── app_utils.py
-├── ocr_final.py
-├── requirements.txt
-├── pages/
-│   ├── 1_Dashboard.py
-│   ├── 2_Override_Review.py
-│   └── 3_Outliers.py
-├── backend/
-│   ├── full_pipeline.py
-│   ├── embedding.py
-│   ├── run_pipeline.py
-│   ├── csv_loader.py
-│   ├── cluster_processor.py
-│   ├── rubric_generator.py
-│   ├── text_normalizer.py
-│   ├── cost_efficiency_logger.py
-│   ├── feedback_generator.py
-│   ├── generate_student_feedback.py
-│   ├── review_store.py
-│   ├── llm_client.py
-│   ├── pdf_exporter.py
-│   ├── email_exporter.py
-│   ├── grading/
-│   │   ├── __init__.py
-│   │   ├── scoring_engine.py
-│   │   ├── keyword_matcher.py
-│   │   ├── math_validator.py
-│   │   └── regex_parser.py
-│   └── README.md
-└── uploads/
 
 ##How It Works
 ###1. OCR
@@ -205,6 +170,43 @@ richer analytics for teacher review
 database-backed run history
 stronger automated feedback generation
 deployment-ready backend API layer
+
+## Project Structure
+
+```text
+Ignisia-main/
+├── streamlit_app.py
+├── app_utils.py
+├── ocr_final.py
+├── requirements.txt
+├── pages/
+│   ├── 1_Dashboard.py
+│   ├── 2_Override_Review.py
+│   └── 3_Outliers.py
+├── backend/
+│   ├── full_pipeline.py
+│   ├── embedding.py
+│   ├── run_pipeline.py
+│   ├── csv_loader.py
+│   ├── cluster_processor.py
+│   ├── rubric_generator.py
+│   ├── text_normalizer.py
+│   ├── cost_efficiency_logger.py
+│   ├── feedback_generator.py
+│   ├── generate_student_feedback.py
+│   ├── review_store.py
+│   ├── llm_client.py
+│   ├── pdf_exporter.py
+│   ├── email_exporter.py
+│   ├── grading/
+│   │   ├── __init__.py
+│   │   ├── scoring_engine.py
+│   │   ├── keyword_matcher.py
+│   │   ├── math_validator.py
+│   │   └── regex_parser.py
+│   └── README.md
+└── uploads/
+
  
 Contributors
 HEXORA-MIT BENGALURU
