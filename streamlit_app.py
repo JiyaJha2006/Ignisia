@@ -14,21 +14,21 @@ from app_utils import (
 
 st.set_page_config(page_title="Ignisia Home", page_icon="📝", layout="wide")
 
-st.title("Ignisia Grading Dashboard")
+st.title("Insignia Grading Dashboard")
 st.write("Upload student answer sheets and an answer-key CSV to run OCR, clustering, grading, and cost reporting.")
 
 with st.sidebar:
     st.header("Run Setup")
     group_by = st.selectbox("Grouping mode", ["auto", "folder", "filename", "single"], index=0)
 
-answer_key_file = st.file_uploader("Answer key CSV", type=["csv"])
+answer_key_file = st.file_uploader("Answer Key", type=["csv"])
 manifest_file = st.file_uploader("Manifest (optional)", type=["json", "csv"])
 sheet_input_file = st.file_uploader(
     "Answer sheets input (single PDF, single image, or ZIP)",
     type=["pdf", "png", "jpg", "jpeg", "zip"],
 )
 sheet_image_files = st.file_uploader(
-    "Or upload multiple answer-sheet images",
+    "Upload Multiple Answer Sheet",
     type=["png", "jpg", "jpeg"],
     accept_multiple_files=True,
 )

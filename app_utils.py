@@ -303,7 +303,7 @@ def build_outlier_df(results):
             is_outlier = (
                 cluster_id == -1
                 or not semantic.get("passed_similarity_threshold", False)
-                or semantic.get("confidence", 0) < 0.6
+                or semantic.get("confidence", 0) < 0.4
             )
             if not is_outlier:
                 continue

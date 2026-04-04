@@ -74,6 +74,24 @@ def derive_reason(best_match, required_elements):
     return reason
 
 
+def analyze_keywords(reference_text, keyword_candidates):
+    matched_keywords = []
+    missing_keywords = []
+    for keyword in keyword_candidates:
+        keyword_text = normalize_text(keyword)
+        if not keyword_text:
+            continue
+        similarity = semantic_similarity(keyword_text, reference_text)
+        if similarity >= 0.45:
+            matched_keywords.append(keyword_text)
+        else:
+            missing_keywords.append(keyword_text)
+    return {
+        "matched_keywords": matched_keywords[:6],
+        "missing_keywords": missing_keywords[:6],
+    }
+
+
 def grade_from_similarity(similarity):
     if similarity >= 0.85:
         return 1.0
@@ -204,6 +222,10 @@ def evaluate_cluster_semantics(cluster_payload, rubric):
         best_match,
         rubric.get("required_elements", [])
     )
+    keyword_analysis = analyze_keywords(
+        best_match["variation_text"],
+        rubric.get("keyword_candidates", rubric.get("required_elements", []))
+    )
 
     if not passed_similarity_threshold:
         reason = (
@@ -219,6 +241,7 @@ def evaluate_cluster_semantics(cluster_payload, rubric):
         "suggested_marks_display": suggested_marks_display,
         "total_marks": total_marks,
         "reason": reason,
+        "keyword_analysis": keyword_analysis,
         "confidence": confidence_from_scores(variation_score_rows),
         "passed_similarity_threshold": passed_similarity_threshold,
         "manual_reviewed": False

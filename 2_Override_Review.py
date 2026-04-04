@@ -59,6 +59,25 @@ def render_cluster_override_form(question_id, cluster, blocking=False):
         st.write("Variation Similarities")
         st.dataframe(pd.DataFrame(similarity_rows), use_container_width=True)
 
+    keyword_analysis = semantic.get("keyword_analysis", {})
+    matched_keywords = keyword_analysis.get("matched_keywords", [])
+    missing_keywords = keyword_analysis.get("missing_keywords", [])
+    if matched_keywords or missing_keywords:
+        st.write("Keyword Analysis")
+        keyword_col1, keyword_col2 = st.columns(2)
+        with keyword_col1:
+            st.markdown("**Matched Keywords**")
+            if matched_keywords:
+                st.write(", ".join(matched_keywords))
+            else:
+                st.write("None")
+        with keyword_col2:
+            st.markdown("**Missing Keywords**")
+            if missing_keywords:
+                st.write(", ".join(missing_keywords))
+            else:
+                st.write("None")
+
     total_marks = float(semantic.get("total_marks", 0) or 0)
     current_marks = semantic.get("suggested_marks")
     default_marks = float(current_marks) if current_marks is not None else 0.0
